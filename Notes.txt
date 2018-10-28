@@ -1,0 +1,6 @@
+
+#1. Db-sql attached.
+#2. Unit and Child theme maintained
+#3. Custom  Fields attached with each post.
+#4. Taxonomies are attached with each post.
+#5. Adding Values to custom fields and taxonomies have been provided.
