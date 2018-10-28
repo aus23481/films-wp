@@ -201,30 +201,32 @@ function create_film_taxonomies() {
 	
 }
 
+
+
 function recent_film_post()
- {
-  global $post;
+{
+ global $post;
 
-  $html = "";
+ $html = "";
 
-  $my_query = new WP_Query( array(
-       'post_type' => 'film',
-       'posts_per_page' => 5
-  ));
+ $my_query = new WP_Query( array(
+	  'post_type' => 'film',
+	  'posts_per_page' => 5
+ ));
 
-  if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
+ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
 
-       $html .= "<h2>" . get_the_title() . " </h2>";
-	   $html .= "<h5>" . get_the_date() . "</h5>";
-       $html .= "<p>" . get_the_excerpt() . "</p>";
-       $html .= "<a href=\"" . get_permalink() . "\" class=\"button\">Read more</a><br/>";
-	   
+	  $html .= "<h2>" . get_the_title() . " </h2>";
+	  $html .= "<h5>" . get_the_date() . "</h5>";
+	  $html .= "<p>" . get_the_excerpt() . "</p>";
+	  $html .= "<a href=\"" . get_permalink() . "\" class=\"button\">Read more</a><br/>";
+	  
 
-  endwhile; endif;
+ endwhile; endif;
 
-  return $html;
- }
- add_shortcode( 'recent_films', 'recent_film_post' );
+ return $html;
+}
+add_shortcode( 'recent_films', 'recent_film_post' );
 
 
 
