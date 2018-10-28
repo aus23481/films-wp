@@ -17,24 +17,52 @@ get_header(); ?>
 			<?php get_template_part( 'content-film', 'single' ); 
 			
 			$key_name = get_post_custom_values($key = 'ticket_price');
-			echo "<hr>Ticket Price::".$key_name[0];
+			echo "<hr><b>Ticket Price::</b>".$key_name[0];
 			
 			$key_name = get_post_custom_values($key = 'release_date');
-			echo "<hr>Release Date::".$key_name[0];
+			echo "<hr><b>Release Date::</b>".$key_name[0];
 			echo "<hr>";
+
+
+			//Taxonomy		   
+			$terms = get_the_terms( $post->ID, 'country' );
+			if ( !empty( $terms ) ){
+				foreach ($terms as $term) {
+					echo "<b>Country::</b>".ucfirst($term->slug)."<hr>";
+				}
+			}
+ 
+ 
+			$terms = get_the_terms( $post->ID, 'genre' );
+			if ( !empty( $terms ) ){
+				foreach ($terms as $term) {
+					echo "<b>Genre::</b>".$term->slug."<hr>";
+				}
+			}
+ 
+			//year
+			$terms = get_the_terms( $post->ID, 'year' );
+			if ( !empty( $terms ) ){
+				foreach ($terms as $term) {
+					echo "<b>Year::</b>".$term->slug."<hr>";
+				}
+			}
+ 
+ 
+			//Actors
+			$terms = get_the_terms( $post->ID, 'actors' );
+			if ( !empty( $terms ) ){
+				foreach ($terms as $term) {
+					echo "<b>Actor::</b>".$term->slug."<hr>";
+				}
+			}
+			
 			
 			?> 
 
 			<?php unite_post_nav(); 
 			
 			
-			
-			$terms = get_terms( 'country' );
-			print_r($terms);
-			/*foreach ($terms as $term) {
-				// $cognome_nome will be "P Elena" or "P Andrea" in your case
-				$cognome_nome = get_field('country', $term->taxonomy.'_'.$term->term_id);
-		   }*/
 		   
 		   
 			
